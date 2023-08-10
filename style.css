@@ -1,0 +1,258 @@
+body{
+    background-color:black;
+}
+button{
+    position:relative;
+}
+div{
+    padding:0px;
+    height:56px;
+}
+img{
+    padding:0;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:56px;
+    height:56px;
+    border:none;
+    background-color:none;
+    z-index: 1;
+}
+.black{
+    background-color:#769656;
+    border-color:#769656;
+    border:none;
+}
+.bottomContentText{
+    top:548px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:16px;
+    height:48px;
+    width:60px;
+    position:absolute;
+    color:white;
+    background-color:black;
+    text-align:center;
+    vertical-align:middle;
+    user-select: none;
+    padding-left:6px;
+    padding-right:6px;
+    padding-top:12px;
+    padding-bottom:12px;
+    border: 4px solid white;
+}
+.bottomContentText:active{
+    background-color:black; 
+    color:white;
+}
+.bottomContentText:hover{
+    background-color:white;
+    color:black;
+}
+.dot{
+    height:16px;
+    width:16px;
+    border-radius:50%;
+    position:absolute;
+    left:20px;
+    top:20px;
+    background-color:rgba(93, 93, 93, 0.66);
+    visibility:hidden;
+    z-index: 3;
+    transition: width 0.25s, height 0.25s, transform 0.25s;
+}
+.dot:hover{
+    width:20px;
+    height:20px;
+    transform:translate(-2px, -2px);
+}
+.leftBox{
+    left:50px;
+    height:136px;
+    width:316px;
+    background-color:black;
+    position:absolute;
+    border: 4px solid white;
+}
+.leftContent{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:24px;
+    text-align:center;
+    line-height:32px;
+    left:50px;
+    height:136px;
+    width:316px;
+    background-color:black;
+    color: white;
+    position:absolute;
+    border: 4px solid white;
+    line-height:136px;
+    vertical-align: middle;
+}
+.piece{
+    transition: width 0.25s, height 0.25s, transform 0.25s;
+}
+.piece:hover{
+    width:64px;
+    height:64px;
+    transform:translate(-3px, -3px);
+}
+.rightBox{
+    left:914px;
+    height:136px;
+    width:316px;
+    background-color:black;
+    position:absolute;
+    border: 4px solid white;
+}
+.rightContent{
+    left:914px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:24px;
+    height:136px;
+    width:316px;
+    position:absolute;
+    color:white;
+    text-align:center;
+    vertical-align:middle;
+    line-height:32px;
+    padding-top:40px;
+}
+.rowColumnIdentifier{
+    position:absolute;
+    left: 0px;
+    z-index: 0;
+}
+.square{
+    height:56px;
+    width:56px;
+    padding:0px;
+}
+.subhead{
+    float:left;
+    top:52px;
+    position:absolute;
+    color:white;
+    width:448px;
+}
+.white{
+    background-color:#eeeed2;
+    border-color:#eeeed2;
+    border:none;
+}
+#backContentText{
+    left:508px;
+    line-height:48px;
+}
+#board{
+    left:416px;
+    top:90px;
+    position:absolute;
+}
+#container{
+    width:100%;
+    height:100%;
+}
+#fastBackContentText{
+    left:416px;
+    line-height:48px;
+}
+#fastForwardContentText{
+    left:784px;
+    line-height:48px;
+}
+#forwardContentText{
+    left:692px;
+    line-height:48px;
+}
+#hintButtonBox{
+    top:396px;
+}
+#hintButtonBoxRight{
+    top:396px;
+}
+#hintButtonContent{
+    top:396px;
+    width:324px;
+    height:144px;
+}
+#hintButtonContent:active{
+    background-color:black;
+    color:white;
+}
+#hintButtonContent:hover{
+    background-color:white;
+    color:black;
+}
+#hintDisplayBox{
+    top:244px;
+}
+#hintDisplayBoxRight{
+    top:244px;
+}
+#hintDisplayContent{
+    top:244px;
+}
+#pRatingContent{
+    top:244px;
+}
+#prevMovesBox{
+    top:92px;
+}
+#prevMovesBoxRight{
+    top:92px;
+}
+#prevMoveContainer{
+    display:table;
+}
+#prevMovesContent{
+    display: table-cell;
+    top:92px;
+    font-size:18px;
+    line-height:24px;
+    vertical-align:middle;
+    border:none;
+    background-color:rgba(255, 0, 0, 0);
+}
+#puzzleID{
+    left:216px;
+    width:848px;
+    text-align:center;
+    font-size:24px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    vertical-align: middle;
+    top:48px;
+}
+#puzzleStatusContent{
+    top:396px;
+}
+#puzzleTurn{
+    left:650px;
+    text-align:left;
+    font-size:24px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    vertical-align: middle;
+    top:58px;
+}
+#ratingContent{
+    top:92px;
+}
+#skipContentText{
+    left:600px;
+    line-height:24px;
+}
+#title{
+    position:absolute;
+    top:20px;
+    padding:0px;
+    text-align:center;
+    background-color:black;
+    color:white;
+    width:448px;
+    font-size: 32px;
+    font-weight:bold;
+    line-height:24px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    left: 416px
+}
