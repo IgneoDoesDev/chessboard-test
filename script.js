@@ -613,7 +613,7 @@ function legalMoves(){
                 if((p1+1*j)%8 - p1%8 == 1*j || (p1+1*j)%8 - p1%8 == -7*j){
                     if(Math.floor((p1+1*j-1)/8) - Math.floor((p1-1)/8) == 0*j){
                         if(currentBoard[p1+1*j-1] != currentBoard[p1+1*j-1].toLowerCase() || currentBoard[p1+1*j-1] == "x"){
-                            kingInCheck(p1+1*j);
+                            kingInCheckBlack(p1+1*j);
                             if(kingCheck == false){
                                 document.getElementById("dot" + (p1+1*j)).style.visibility = "visible";
                             }
@@ -624,8 +624,8 @@ function legalMoves(){
             if(p1+7*j<65 && p1+7*j>0){
                 if((p1+7*j)%8 - p1%8 == -1*j || (p1+7*j)%8 - p1%8 == 7*j){
                     if(Math.floor((p1+7*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
-                        if(currentBoard[p1+7*j-1] != currentBoard[p1+7*j-1].toLowerCase() || currentBoard[p1+1*j-1] == "x"){
-                            kingInCheck(p1+7*j);
+                        if(currentBoard[p1+7*j-1] != currentBoard[p1+7*j-1].toLowerCase() || currentBoard[p1+7*j-1] == "x"){
+                            kingInCheckBlack(p1+7*j);
                             if(kingCheck == false){
                                 document.getElementById("dot" + (p1+7*j)).style.visibility = "visible";
                             }
@@ -636,8 +636,8 @@ function legalMoves(){
             if(p1+8*j<65 && p1+8*j>0){
                 if((p1+8*j)%8 - p1%8 == 0*j){
                     if(Math.floor((p1+8*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
-                        if(currentBoard[p1+8*j-1] != currentBoard[p1+8*j-1].toLowerCase() || currentBoard[p1+1*j-1] == "x"){
-                            kingInCheck(p1+8*j);
+                        if(currentBoard[p1+8*j-1] != currentBoard[p1+8*j-1].toLowerCase() || currentBoard[p1+8*j-1] == "x"){
+                            kingInCheckBlack(p1+8*j);
                             if(kingCheck == false){
                                 document.getElementById("dot" + (p1+8*j)).style.visibility = "visible";
                             }
@@ -648,8 +648,8 @@ function legalMoves(){
             if(p1+9*j<65 && p1+9*j>0){
                 if((p1+9*j)%8 - p1%8 == 1*j || (p1+9*j)%8 - p1%8 == -7*j){
                     if(Math.floor((p1+9*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
-                        if(currentBoard[p1+9*j-1] != currentBoard[p1+9*j-1].toLowerCase() || currentBoard[p1+1*j-1] == "x"){
-                            kingInCheck(p1+9*j);
+                        if(currentBoard[p1+9*j-1] != currentBoard[p1+9*j-1].toLowerCase() || currentBoard[p1+9*j-1] == "x"){
+                            kingInCheckBlack(p1+9*j);
                             if(kingCheck == false){
                                 document.getElementById("dot" + (p1+9*j)).style.visibility = "visible";
                             }
@@ -802,6 +802,146 @@ function kingInCheck(newPosition){
     }//rook/queen/bishop
     for(let i=0;i>-3;i-=2){
         if(currentBoard[newPosition-7+i-1] == "p"){
+            kingCheck = true;
+        }//pawn
+    } //pawn
+}
+
+function kingInCheckBlack(newPosition){
+    kingCheck = false;
+    for(let j=-1;j<2;j+=2){
+        stop = false;
+        for(let i=8*j;i!=64*j;i+=8*j){
+            if (stop == false){
+                if(i+newPosition > 0 && i+newPosition < 65){
+                    if(currentBoard[i+newPosition-1] == "R" || currentBoard[i+newPosition-1] == "Q"){
+                        kingCheck = true;
+                        stop = true;
+                    }
+                    else if(currentBoard[newPosition+i-1] != "x"){
+                        stop = true;
+                    }
+                }
+            }
+        }
+        stop = false
+        for(let i=-1*j;i!=-8*j;i -= 1*j){
+            if(stop == false){
+                if(Math.floor((newPosition+i-1)/8) == Math.floor((newPosition-1)/8)){
+                    if(currentBoard[newPosition+i-1] == "R" || currentBoard[newPosition+i-1] == "Q"){
+                        kingCheck = true;
+                    }
+                    else if(currentBoard[newPosition+i-1] != "x"){
+                        stop = true;
+                    }
+                }
+            }
+        }
+        if(newPosition+1*j<65){
+            if((newPosition+1*j)%8 - newPosition%8 == 1 || (newPosition+1*j)%8 - newPosition%8 == -7){
+                if(Math.floor((newPosition+1*j-1)/8) - Math.floor((newPosition-1)/8) == 0){
+                    if(currentBoard[newPosition+1*j-1] == "K"){
+                        kingCheck = true;
+                    }
+                }
+            }
+        }
+        if(newPosition+7*j<65){
+            if((newPosition+7*j)%8 - newPosition%8 == -1 || (newPosition+7*j)%8 - newPosition%8 == 7){
+                if(Math.floor((newPosition+7*j-1)/8) - Math.floor((newPosition-1)/8) == 1*j){
+                    if(currentBoard[newPosition+7*j-1] == "K"){
+                        kingCheck = true;
+                    }
+                }
+            }
+        }
+        if(newPosition+8*j<65){
+            if((newPosition+8*j)%8 - newPosition%8 == 0){
+                if(Math.floor((newPosition+8*j-1)/8) - Math.floor((newPosition-1)/8) == 1*j){
+                    if(currentBoard[newPosition+8*j-1] == "K"){
+                        kingCheck = true;
+                    }
+                }
+            }
+        }
+        if(newPosition+9*j<65){
+            if((newPosition+9*j)%8 - newPosition%8 == 1 || (newPosition+9*j)%8 - newPosition%8 == -7){
+                if(Math.floor((newPosition+9*j-1)/8) - Math.floor((newPosition-1)/8) == 1){
+                    if(currentBoard[newPosition+9*j-1] == "K"){
+                        kingCheck = true;
+                    }
+                }
+            }
+        }
+        stop = false;
+        for(let i=-7*j;i!=j*-56;i -= 7*j){
+            if((newPosition+i)%8 == 1){
+                stop = true;
+            }
+            if(stop == false){
+                if(newPosition+i > 0){
+                    if(currentBoard[newPosition+i-1] == "B" || currentBoard[newPosition+i-1] == "Q"){
+                        kingCheck = true;
+                        stop = true;
+                    }
+                    else if(currentBoard[newPosition+i-1] != "x"){
+                        stop = true;
+                    }
+                }
+            }
+        }
+        stop = false;
+        for(let i=9*j;i!=72*j;i += 9*j){
+            if(newPosition+i > 0 && newPosition+i < 65){
+                if(Math.floor((newPosition+i-1)/8)-Math.floor((newPosition+i-10)/8) == 1){
+                    if(stop == false){
+                        if(newPosition+i > 0){
+                            if(currentBoard[newPosition+i-1] == "B" || currentBoard[newPosition+i-1] == "Q"){
+                                kingCheck = true;
+                                stop = true;
+                            }
+                            else if(currentBoard[newPosition+i-1] != "x"){
+                                stop = true;
+                            }
+                        }
+                    }
+                }
+                else{
+                    stop = true;
+                }
+            }
+        }
+        if(currentBoard[newPosition-6*j-1] == "N"){
+            if((newPosition-6*j)%8 - newPosition%8 == -6 ||(newPosition-6*j)%8 - newPosition%8 == 2 ){
+                if(Math.floor((newPosition-6*j-1)/8) - Math.floor((newPosition-1)/8) == -1*j){
+                    kingCheck = true;
+                }
+            }
+        }//knight
+        if(currentBoard[newPosition-10*j-1] == "N"){
+            if((newPosition-10*j)%8 - newPosition%8 == 6 ||(newPosition-10*j)%8 - newPosition%8 == -2 ){
+                if(Math.floor((newPosition-10*j-1)/8) - Math.floor((newPosition-1)/8) == -1*j){
+                    kingCheck = true;
+                }
+            }
+        }//knight
+        if(currentBoard[newPosition-15*j-1] == "N"){
+            if((newPosition-15*j)%8 - newPosition%8 == -7 ||(newPosition-15*j)%8 - newPosition%8 == 1 ){
+                if(Math.floor((newPosition-15*j-1)/8) - Math.floor((newPosition-1)/8) == -2*j){
+                    kingCheck = true;
+                }
+            }
+        }//knight
+        if(currentBoard[newPosition-17*j-1] == "N"){
+            if((newPosition-17*j)%8 - newPosition%8 == 7 ||(newPosition-17*j)%8 - newPosition%8 == -1 ){
+                if(Math.floor((newPosition-17*j-1)/8) - Math.floor((newPosition-1)/8) == -2*j){
+                    kingCheck = true;
+                }
+            }
+        }//knight
+    }//rook/queen/bishop
+    for(let i=0;i>-3;i-=2){
+        if(currentBoard[newPosition+9+i-1] == "P"){
             kingCheck = true;
         }//pawn
     } //pawn
