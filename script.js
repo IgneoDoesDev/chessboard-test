@@ -53,6 +53,7 @@ let lines = 1;
 let prevPosition = 0;
 let kingCheck = false;
 let enPassant = -1
+let enPassant2 = -1
 
 function hintRequested(){
     if(puzzleCompleted == false){
@@ -219,6 +220,9 @@ function squareClicked(id){
                     if(document.getElementById("dot"+p2).style.visibility == "visible"){
                         if((currentBoard[id-1] != currentBoard[id-1].toUpperCase() && turn == "w") || (currentBoard[id-1] != currentBoard[id-1].toLowerCase() && turn == "b") || (currentBoard[id-1] == "x")){
                             currentPiece = currentPiece.toLowerCase();
+                            if(p2 == enPassant){
+                                currentBoard[enPassant2-1] = "x"
+                            }
                             enPassant = -1
                             console.log(currentBoard[p1-1])
                             if(currentBoard[p1-1].toLowerCase() == "p"){
@@ -316,8 +320,9 @@ function legalMoves(){
             if(currentBoard[p1-7+i-1] == currentBoard[p1-7+i-1].toLowerCase() && currentBoard[p1-7+i-1] != "x"){
                 document.getElementById("dot" + (p1+(-7+i))).style.visibility = "visible";
             }
-            else if(p1-7+i == enPassant & currentBoard[p1-7+i-1-8] == "p"){
+            else if(p1-7+i == enPassant & currentBoard[p1-7+i-1+8] == "p"){
                 document.getElementById("dot" + (p1+(-7+i))).style.visibility = "visible";
+                enPassant2 = p1-7+i+8
             }
         } //pawn
     }
@@ -516,8 +521,9 @@ function legalMoves(){
             if(currentBoard[p1+7-i-1] == currentBoard[p1+7-i-1].toUpperCase() && currentBoard[p1+7-i-1] != "x"){
                 document.getElementById("dot" + (p1+(+7-i))).style.visibility = "visible";
             }
-            else if(p1+7-i == enPassant & currentBoard[p1+7-i-1-8] == "p"){
+            else if(p1+7-i == enPassant & currentBoard[p1+7-i-1-8] == "P"){
                 document.getElementById("dot" + (p1+(+7-i))).style.visibility = "visible";
+                enPassant2 = p1+7-i-8
             }
         } //pawn
     }
