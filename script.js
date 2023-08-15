@@ -52,6 +52,7 @@ let prevMovesPadding = 0;
 let lines = 1;
 let prevPosition = 0;
 let kingCheck = false;
+let enPassant = -1
 
 function hintRequested(){
     if(puzzleCompleted == false){
@@ -203,7 +204,7 @@ function squareClicked(id){
     if(boardMoves == true){
         if(p1 == 0){
             hideDots()
-            if(currentBoard[parseInt(id)-1] != "x"){
+            if((currentBoard[parseInt(id)-1] == currentBoard[parseInt(id)-1].toLowerCase() && turn == "b") || (currentBoard[parseInt(id)-1] == currentBoard[parseInt(id)-1].toUpperCase() && turn == "w")){
                 p1 = parseInt(id);
                 legalMoves();
             }
@@ -218,6 +219,16 @@ function squareClicked(id){
                     if(document.getElementById("dot"+p2).style.visibility == "visible"){
                         if((currentBoard[id-1] != currentBoard[id-1].toUpperCase() && turn == "w") || (currentBoard[id-1] != currentBoard[id-1].toLowerCase() && turn == "b") || (currentBoard[id-1] == "x")){
                             currentPiece = currentPiece.toLowerCase();
+                            enPassant = -1
+                            console.log(currentBoard[p1-1])
+                            if(currentBoard[p1-1].toLowerCase() == "p"){
+                                if(p2-p1 == -16){
+                                    enPassant = p2+8
+                                }
+                                else if(p2-p1 == 16){
+                                    enPassant = p1+8
+                                }
+                            }
                             currentBoard[p2-1] =  currentBoard[p1-1];
                             currentBoard[p1-1] = "x";
                             boardSetup();
@@ -233,9 +244,15 @@ function squareClicked(id){
                     hideDots()
                 }
             }
-            else if(currentBoard[id-1] == currentBoard[id-1].toUpperCase()){
+            else if((currentBoard[parseInt(id)-1] == currentBoard[parseInt(id)-1].toLowerCase() && turn == "b") || (currentBoard[parseInt(id)-1] == currentBoard[parseInt(id)-1].toUpperCase() && turn == "w") && currentBoard[parseInt(id)-1] != "x"){
                 p1 = 0;
                 hideDots()
+                if(p1 != id){
+                    squareClicked(id)
+                }
+                else{
+                    hideDots()
+                }
             }
         }
         
@@ -297,6 +314,9 @@ function legalMoves(){
         }
         for(let i=0;i>-3;i-=2){
             if(currentBoard[p1-7+i-1] == currentBoard[p1-7+i-1].toLowerCase() && currentBoard[p1-7+i-1] != "x"){
+                document.getElementById("dot" + (p1+(-7+i))).style.visibility = "visible";
+            }
+            else if(p1-7+i == enPassant & currentBoard[p1-7+i-1-8] == "p"){
                 document.getElementById("dot" + (p1+(-7+i))).style.visibility = "visible";
             }
         } //pawn
@@ -389,31 +409,40 @@ function legalMoves(){
     }
     if(currentBoard[p1-1] == "N"){
         for(let j=-1;j<2;j+=2){
-            if(currentBoard[p1+10*j-1] != currentBoard[p1+10*j-1].toUpperCase()){
-                if((p1+10*j)%8 - p1%8 == -6*j ||(p1+10*j)%8 - p1%8 == 2*j){
-                    if(Math.floor((p1+10*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
-                        document.getElementById("dot" + (p1+10*j)).style.visibility = "visible";
+            console.log("N")
+            if((p1+10*j) > 0 && (p1+10*j) < 64){
+                if(currentBoard[p1+10*j-1] != currentBoard[p1+10*j-1].toUpperCase()){
+                    if((p1+10*j)%8 - p1%8 == -6*j ||(p1+10*j)%8 - p1%8 == 2*j){
+                        if(Math.floor((p1+10*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
+                            document.getElementById("dot" + (p1+10*j)).style.visibility = "visible";
+                        }
                     }
                 }
             }
-            if(currentBoard[p1+17*j-1] != currentBoard[p1+17*j-1].toUpperCase()){
-                if((p1+17*j)%8 - p1%8 == -7*j ||(p1+17*j)%8 - p1%8 == 1*j ){
-                    if(Math.floor((p1+17*j-1)/8) - Math.floor((p1-1)/8) == 2*j){
-                        document.getElementById("dot" + (p1+17*j)).style.visibility = "visible";
+            if((p1+17*j) > 0 && (p1+17*j) < 64){
+                if(currentBoard[p1+17*j-1] != currentBoard[p1+17*j-1].toUpperCase()){
+                    if((p1+17*j)%8 - p1%8 == -7*j ||(p1+17*j)%8 - p1%8 == 1*j ){
+                        if(Math.floor((p1+17*j-1)/8) - Math.floor((p1-1)/8) == 2*j){
+                            document.getElementById("dot" + (p1+17*j)).style.visibility = "visible";
+                        }
                     }
                 }
             }
-            if(currentBoard[p1+15*j-1] != currentBoard[p1+15*j-1].toUpperCase()){
-                if((p1+15*j)%8 - p1%8 == 7*j ||(p1+15*j)%8 - p1%8 == -1*j ){
-                    if(Math.floor((p1+15*j-1)/8) - Math.floor((p1-1)/8) == 2*j){
-                        document.getElementById("dot" + (p1+15*j)).style.visibility = "visible";
+            if((p1+15*j) > 0 && (p1+15*j) < 64){
+                if(currentBoard[p1+15*j-1] != currentBoard[p1+15*j-1].toUpperCase()){
+                    if((p1+15*j)%8 - p1%8 == 7*j ||(p1+15*j)%8 - p1%8 == -1*j ){
+                        if(Math.floor((p1+15*j-1)/8) - Math.floor((p1-1)/8) == 2*j){
+                            document.getElementById("dot" + (p1+15*j)).style.visibility = "visible";
+                        }
                     }
                 }
             }
-            if(currentBoard[p1+6*j-1] != currentBoard[p1+6*j-1].toUpperCase()){
-                if((p1+6*j)%8 - p1%8 == 6*j ||(p1+6*j)%8 - p1%8 == -2*j ){
-                    if(Math.floor((p1+6*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
-                        document.getElementById("dot" + (p1+6*j)).style.visibility = "visible";
+            if((p1+6*j) > 0 && (p1+6*j) < 64){
+                if(currentBoard[p1+6*j-1] != currentBoard[p1+6*j-1].toUpperCase()){
+                    if((p1+6*j)%8 - p1%8 == 6*j ||(p1+6*j)%8 - p1%8 == -2*j ){
+                        if(Math.floor((p1+6*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
+                            document.getElementById("dot" + (p1+6*j)).style.visibility = "visible";
+                        }
                     }
                 }
             }
@@ -485,6 +514,9 @@ function legalMoves(){
         }
         for(let i=0;i>-3;i-=2){
             if(currentBoard[p1+7-i-1] == currentBoard[p1+7-i-1].toUpperCase() && currentBoard[p1+7-i-1] != "x"){
+                document.getElementById("dot" + (p1+(+7-i))).style.visibility = "visible";
+            }
+            else if(p1+7-i == enPassant & currentBoard[p1+7-i-1-8] == "p"){
                 document.getElementById("dot" + (p1+(+7-i))).style.visibility = "visible";
             }
         } //pawn
@@ -576,35 +608,48 @@ function legalMoves(){
         }
     }
     if(currentBoard[p1-1] == "n"){
-        for(let j=-1;j<2;j+=2){
-            if(currentBoard[p1+10*j-1] != currentBoard[p1+10*j-1].toUpperCase()){
-                if((p1+10*j)%8 - p1%8 == -6*j ||(p1+10*j)%8 - p1%8 == 2*j){
-                    if(Math.floor((p1+10*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
-                        document.getElementById("dot" + (p1+10*j)).style.visibility = "visible";
+        for(let j=1;j>-2;j-=2){
+            console.log("n")
+            if((p1+10*j) > 0 && (p1+10*j) < 64){
+                if((currentBoard[p1+10*j-1] != currentBoard[p1+10*j-1].toLowerCase()) || (currentBoard[p1+10*j-1] == "x")){
+                    if((p1+10*j)%8 - p1%8 == -6*j ||(p1+10*j)%8 - p1%8 == 2*j){
+                        if(Math.floor((p1+10*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
+                            document.getElementById("dot" + (p1+10*j)).style.visibility = "visible";
+                        }
                     }
                 }
             }
-            if(currentBoard[p1+17*j-1] != currentBoard[p1+17*j-1].toUpperCase()){
-                if((p1+17*j)%8 - p1%8 == -7*j ||(p1+17*j)%8 - p1%8 == 1*j ){
-                    if(Math.floor((p1+17*j-1)/8) - Math.floor((p1-1)/8) == 2*j){
-                        document.getElementById("dot" + (p1+17*j)).style.visibility = "visible";
+            console.log(1)
+            if((p1+17*j) > 0 && (p1+17*j) < 64){
+                if((currentBoard[p1+17*j-1] != currentBoard[p1+17*j-1].toLowerCase()) || (currentBoard[p1+17*j-1] == "x")){
+                    if((p1+17*j)%8 - p1%8 == -7*j ||(p1+17*j)%8 - p1%8 == 1*j ){
+                        if(Math.floor((p1+17*j-1)/8) - Math.floor((p1-1)/8) == 2*j){
+                            document.getElementById("dot" + (p1+17*j)).style.visibility = "visible";
+                        }
                     }
                 }
             }
-            if(currentBoard[p1+15*j-1] != currentBoard[p1+15*j-1].toUpperCase()){
-                if((p1+15*j)%8 - p1%8 == 7*j ||(p1+15*j)%8 - p1%8 == -1*j ){
-                    if(Math.floor((p1+15*j-1)/8) - Math.floor((p1-1)/8) == 2*j){
-                        document.getElementById("dot" + (p1+15*j)).style.visibility = "visible";
+            console.log(2)
+            if((p1+15*j) > 0 && (p1+15*j) < 64){
+                if((currentBoard[p1+15*j-1] != currentBoard[p1+15*j-1].toLowerCase()) || (currentBoard[p1+15*j-1] == "x")){
+                    if((p1+15*j)%8 - p1%8 == 7*j ||(p1+15*j)%8 - p1%8 == -1*j ){
+                        if(Math.floor((p1+15*j-1)/8) - Math.floor((p1-1)/8) == 2*j){
+                            document.getElementById("dot" + (p1+15*j)).style.visibility = "visible";
+                        }
                     }
                 }
             }
-            if(currentBoard[p1+6*j-1] != currentBoard[p1+6*j-1].toUpperCase()){
-                if((p1+6*j)%8 - p1%8 == 6*j ||(p1+6*j)%8 - p1%8 == -2*j ){
-                    if(Math.floor((p1+6*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
-                        document.getElementById("dot" + (p1+6*j)).style.visibility = "visible";
+            console.log(3)
+            if((p1+6*j) > 0 && (p1+6*j) < 64){
+                if((currentBoard[p1+6*j-1] != currentBoard[p1+6*j-1].toLowerCase()) || (currentBoard[p1+6*j-1] == "x")){
+                    if((p1+6*j)%8 - p1%8 == 6*j ||(p1+6*j)%8 - p1%8 == -2*j ){
+                        if(Math.floor((p1+6*j-1)/8) - Math.floor((p1-1)/8) == 1*j){
+                            document.getElementById("dot" + (p1+6*j)).style.visibility = "visible";
+                        }
                     }
                 }
             }
+            console.log(4)
         }
     }
     if(currentBoard[p1-1] == "k"){
