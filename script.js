@@ -249,11 +249,11 @@ function squareClicked(id){
                                 }
                             }
                             else if(currentBoard[p1-1].toLowerCase() == "r"){
-                                if(p1%8 == 0 && (Math.floor((p1-1)/8) == 0 || Math.floor((p1-1)/8) == 7){
+                                if(p1%8 == 0 && (Math.floor((p1-1)/8) == 0 || Math.floor((p1-1)/8) == 7)){
                                     if(turn == "w"){
                                         wShortCastle = false
                                     }
-                                    else(turn == "b"){
+                                    else if(turn == "b"){
                                         bShortCastle = false
                                     }
                                 }
@@ -261,7 +261,7 @@ function squareClicked(id){
                                     if(turn == "w"){
                                         wLongCastle = false
                                     }
-                                    else(turn == "b"){
+                                    else if(turn == "b"){
                                         bLongCastle = false
                                     }
                                 }
