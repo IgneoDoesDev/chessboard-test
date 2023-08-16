@@ -15,36 +15,10 @@
         <div id = "subheader">
             <div class="subhead" id = "puzzleID">Puzzle Name</div>
         </div>
-        <div id="leftSidebar">
-            <div id="leftBoxes">
-                <div class = "leftBox" id="prevMovesBox"></div>
-                <div class = "leftBox" id="hintDisplayBox"></div>
-                <div class = "leftBox" id="hintButtonBox"></div>
-            </div>
-            <div id="leftContent">
-                <div id="prevMoveContainer">
-                    <div class = "leftContent" id="prevMovesContent">Previous Moves Will Display Here</div>
-                </div>
-                <div class = "leftContent" id="hintDisplayContent">Hint Will Display Here</div>
-                <input class = "leftContent" id="hintButtonContent" type="button" value="Click To Show Hint" onclick="hintRequested()">
-            </div>
-        </div>
-        <div id="rightSidebar">
-            <div id="rightBoxes">
-                <div class = "rightBox" id="prevMovesBoxRight"></div>
-                <div class = "rightBox" id="hintDisplayBoxRight"></div>
-                <div class = "rightBox" id="hintButtonBoxRight"></div>
-            </div>
-            <div id="rightContent">
-                <div class = "rightContent" id="ratingContent">Puzzle Rating:<br>2975</div>
-                <div class = "rightContent" id="pRatingContent">Your Rating:<br>2609</div>
-                <div class = "rightContent" id="puzzleStatusContent">Puzzle Status:<br>In Progress</div>
-            </div>
-        </div>
         <div id="bottomSidebar">
             <div class = "bottomContentText" id="fastBackContentText" onclick="fback()">First</div>
             <div class = "bottomContentText" id="backContentText" onclick="back()">Back</div>
-            <div class = "bottomContentText" id="skipContentText" onclick="puzzleSetup()">Skip<br>Puzzle</div>
+            <div class = "bottomContentText" id="skipContentText" onclick="setup()">Skip<br>Puzzle</div>
             <div class = "bottomContentText" id="forwardContentText" onclick="forward()">Forward</div>
             <div class = "bottomContentText" id="fastForwardContentText" onclick="fforward()">Last</div>
         </div>
