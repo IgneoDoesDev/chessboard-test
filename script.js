@@ -388,12 +388,33 @@ function legalMoves(){
         }
         if(wLongCastle == true){
             if(currentBoard[p1-2] == "x" && currentBoard[p1-3] == "x" && currentBoard[p1-4] == "x"){
-                document.getElementById("dot" + (p1-2)).style.visibility = "visible";
+                kingInCheck(p1)
+                if(kingCheck == "false"){
+                    kingInCheck(p1-1)
+                    if(kingCheck == "false"){
+                        kingInCheck(p1-2)
+                        if(kingCheck == "false"){
+                            kingInCheck(p1-3)
+                            if(kingCheck == "false"){
+                                document.getElementById("dot" + (p1-2)).style.visibility = "visible";
+                            }
+                        }
+                    }
+                }
             }
         }
         if(wShortCastle == true){
             if(currentBoard[p1] == "x" && currentBoard[p1+1] == "x"){
-                document.getElementById("dot" + (p1+2)).style.visibility = "visible";
+                kingInCheck(p1)
+                if(kingCheck == "false"){
+                    kingInCheck(p1+1)
+                    if(kingCheck == "false"){
+                        kingInCheck(p1+2)
+                        if(kingCheck == "false"){
+                            document.getElementById("dot" + (p1+1)).style.visibility = "visible";
+                        }
+                    }
+                }
             }
         }
     }
@@ -599,6 +620,16 @@ function legalMoves(){
                         }
                     }
                 }
+            }
+        }
+        if(bLongCastle == true){
+            if(currentBoard[p1-2] == "x" && currentBoard[p1-3] == "x" && currentBoard[p1-4] == "x"){
+                document.getElementById("dot" + (p1-2)).style.visibility = "visible";
+            }
+        }
+        if(bShortCastle == true){
+            if(currentBoard[p1] == "x" && currentBoard[p1+1] == "x"){
+                document.getElementById("dot" + (p1+2)).style.visibility = "visible";
             }
         }
     }
