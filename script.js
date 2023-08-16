@@ -54,6 +54,7 @@ let prevPosition = 0;
 let kingCheck = false;
 let enPassant = -1
 let enPassant2 = -1
+let savedBoard = ["r","n","b","q","k","b","n","r","p","p","p","p","p","p","p","p","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","P","P","P","P","P","P","P","P","R","N","B","Q","K","B","N","R"]
 
 function hintRequested(){
     if(puzzleCompleted == false){
