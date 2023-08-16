@@ -55,6 +55,10 @@ let kingCheck = false;
 let enPassant = -1
 let enPassant2 = -1
 let savedBoard = ["r","n","b","q","k","b","n","r","p","p","p","p","p","p","p","p","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","P","P","P","P","P","P","P","P","R","N","B","Q","K","B","N","R"]
+let wLongCastle = true
+let bLongCastle = true
+let wShortCastle = true
+let bShortCastle = true
 
 function hintRequested(){
     if(puzzleCompleted == false){
@@ -232,6 +236,34 @@ function squareClicked(id){
                                 }
                                 else if(p2-p1 == 16){
                                     enPassant = p1+8
+                                }
+                            }
+                            else if(currentBoard[p1-1].toLowerCase() == "k"){
+                                if(turn == "w"){
+                                    wLongCastle = false
+                                    wShortCastle = false
+                                }
+                                else if(turn == "b"){
+                                    bLongCastle = false
+                                    bShortCastle = false
+                                }
+                            }
+                            else if(currentBoard[p1-1].toLowerCase() == "r"){
+                                if(p1%8 == 0 && (Math.floor((p1-1)/8) == 0 || Math.floor((p1-1)/8) == 7){
+                                    if(turn == "w"){
+                                        wShortCastle = false
+                                    }
+                                    else(turn == "b"){
+                                        bShortCastle = false
+                                    }
+                                }
+                                else if(p1%8 == 1 && (Math.floor((p1-1)/8) == 0 || Math.floor((p1-1)/8) == 7)){
+                                    if(turn == "w"){
+                                        wLongCastle = false
+                                    }
+                                    else(turn == "b"){
+                                        bLongCastle = false
+                                    }
                                 }
                             }
                             currentBoard[p2-1] =  currentBoard[p1-1];
