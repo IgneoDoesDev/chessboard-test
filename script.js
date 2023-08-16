@@ -249,19 +249,19 @@ function squareClicked(id){
                                 }
                             }
                             else if(currentBoard[p1-1].toLowerCase() == "r"){
-                                if(p1%8 == 0 && (Math.floor((p1-1)/8) == 0 || Math.floor((p1-1)/8) == 7)){
-                                    if(turn == "w"){
+                                if(turn == "w"){
+                                    if(p1%8 == 0 && Math.floor((p1-1)/8) == 7){
                                         wShortCastle = false
                                     }
-                                    else if(turn == "b"){
-                                        bShortCastle = false
-                                    }
-                                }
-                                else if(p1%8 == 1 && (Math.floor((p1-1)/8) == 0 || Math.floor((p1-1)/8) == 7)){
-                                    if(turn == "w"){
+                                    else if(p1%8 == 1 && Math.floor((p1-1)/8) == 7){
                                         wLongCastle = false
                                     }
-                                    else if(turn == "b"){
+                                }
+                                else if(turn == "b"){
+                                    if(p1%8 == 0 && Math.floor((p1-1)/8) == 0){
+                                        bShortCastle = false
+                                    }
+                                    else if(p1%8 == 1 && Math.floor((p1-1)/8) == 0){
                                         bLongCastle = false
                                     }
                                 }
@@ -535,6 +535,16 @@ function legalMoves(){
                         }
                     }
                 }
+            }
+        }
+        if(wLongCastle == true){
+            if(currentBoard[p1-2] == "x" && currentBoard[p1-3] == "x" && currentBoard[p1-4] == "x"){
+                document.getElementById("dot" + (p1-2)).style.visibility = "visible";
+            }
+        }
+        if(wShortCastle == true){
+            if(currentBoard[p1] == "x" && currentBoard[p1+1] == "x"){
+                document.getElementById("dot" + (p1+2)).style.visibility = "visible";
             }
         }
     }
