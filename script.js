@@ -1,40 +1,7 @@
 let currentBoard = ["r","n","b","q","k","b","n","r","p","p","p","p","p","p","p","p","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","P","P","P","P","P","P","P","P","R","N","B","Q","K","B","N","R"];
-let puzzleBoards = [["x","k","x","x","x","x","x","x","x","p","p","x","x","x","x","x","p","x","x","b","x","x","x","x","x","x","x","p","x","x","x","R","x","x","x","B","p","P","x","P","x","x","x","x","x","x","r","x","P","P","x","x","x","x","x","x","K","x","x","x","x","x","x", "x"],
-["r", "x", "b", "x", "x", "x", "x", "x", "p", "x", "x", "x", "x", "x", "x", "R", "x", "x", "x", "x", "x", "k", "p", "x", "x", "x", "x", "x", "p", "x", "N", "x", "x", "x", "x", "x", "x", "P", "x", "x", "q", "p", "x", "x", "x", "x", "x", "P", "x", "x", "x", "x", "x", "x", "K", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-["k", "x", "x", "x", "x", "x", "n", "r", "p", "x", "B", "r", "x", "p", "p", "p", "b", "x", "x", "x", "p", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P", "x", "P", "x", "x", "x", "x", "x", "x", "x", "x", "x", "K", "x", "x", "x", "x", "x", "x", "x", "x", "P", "P", "P", "x", "R", "x", "x", "x", "x", "x", "x"],
-["N", "n", "x", "x", "k", "x", "x", "r", "x", "x", "x", "x", "n", "p", "p", "p", "p", "x", "x", "x", "p", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P", "x", "x", "P", "x", "P", "x", "B", "x", "x", "R", "x", "P", "x", "x", "b", "x", "x", "P", "x", "x", "x", "x", "b", "x", "x", "x", "K", "x", "x", "x"],
-["x", "x","x","x","x","x", "k", "x", "x", "x", "x", "x", "x", "x", "p", "p", "x", "p", "x", "N", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "p", "x", "x", "x", "x", "x", "x", "x", "x", "P", "R", "x", "x", "x", "x", "P", "x", "n", "x", "x", "x", "x", "r", "x", "x", "x", "K", "x", "x", "x", "x", "x"],
-["x", "x", "x", "r", "x", "x", "k", "x", "x", "x", "p", "x", "x", "p", "p", "p", "p", "b", "x", "p", "x", "x", "x", "x", "x", "x", "p", "Q", "q", "x", "x", "P", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P", "P", "x", "x", "R", "x", "x", "P", "x", "x", "K", "x", "P", "P", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-["r","n","b","k","q","b","x","r","p","p","p","x","p","p","x","p","x","x","x","x","x","x","x","x","x","x","x","N","x","x","n","x","x","x","x","P","x","x","x","x","x","x","Q","x","x","x","x","x","P","P","P","x","P","P","P","P","R","x","x","K","x","B","N","R"],
-["r", "x", "x", "q", "k", "x", "n", "r", "p", "p", "p", "x", "x", "p", "p", "x", "x", "x", "n", "p", "x", "x", "x", "p", "x", "x", "b", "x", "p", "x", "x", "x", "x", "x", "B", "x", "P", "x", "x", "x", "x", "x", "x", "P", "B", "Q", "x", "x", "P", "P", "P", "N", "x", "P", "P", "P", "R", "x", "x", "x", "x", "R", "K", "x"],
-["r", "n", "x", "x", "x", "x", "k", "r", "x", "x", "R", "x", "x", "x", "x", "x", "p", "x", "x", "x", "x", "x", "B", "p", "q", "p", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P", "P", "P", "x", "x", "x", "x", "R", "x", "K", "x"],
-["x", "k", "x", "x", "x", "x", "x", "r", "p", "p", "x", "r", "x", "p", "p", "x", "x", "x", "x", "x", "x", "n", "x", "x", "x", "N", "x", "x", "x", "x", "x", "x", "x", "x", "x", "Q", "x", "x", "x", "p", "x", "P", "x", "x", "x", "x", "x", "x", "P", "K", "P", "x", "x", "P", "x", "x", "x", "x", "x", "x", "x", "x", "x", "q"],
-["R", "x", "x", "x", "x", "r", "k", "x", "x", "x", "x", "x", "x", "p", "x", "p", "x", "x", "x", "p", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "K", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "r", "R", "x", "x", "x", "x", "x", "x", "x"],
-["x", "x", "x", "x", "x", "x", "R", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "K", "x", "k", "x", "x", "x", "x", "x", "x", "p", "x", "x", "x", "x", "x", "x", "x", "x", "p", "x", "x", "x", "x", "x", "p", "r", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-["x", "x", "k", "r", "x", "x", "n", "r", "Q", "b", "x", "x", "p", "x", "b", "p", "P", "x", "x", "x", "p", "p", "p", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "p", "P", "x", "x", "x", "x", "x", "x", "K", "x", "x", "x", "x", "x", "N", "x", "P", "x", "x", "x", "P", "P", "P", "q", "x", "x", "x", "x", "q", "x", "R"],
-["x", "r", "x", "x", "x", "x", "x", "x", "x", "x", "R", "x", "x", "x", "p", "x", "p", "x", "x", "k", "p", "x", "x", "p", "B", "x", "x", "x", "p", "x", "x", "n", "x", "x", "x", "x", "P", "x", "x", "x", "x", "x", "x", "r", "x", "x", "x", "x", "P", "x", "x", "x", "x", "b", "P", "P", "K", "x", "R", "x", "x", "x", "x", "x"],
-["r", "x", "x", "q", "x", "r", "k", "x", "p", "p", "p", "x", "n", "p", "x", "p", "x", "x", "n", "p", "x", "x", "p", "Q", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P", "x", "b", "x", "x", "x", "N", "B", "x", "N", "x", "x", "P", "P", "P", "x", "x", "P", "P", "P", "R", "x", "x", "x", "x", "R", "K", "x"],
-["x", "r", "x", "x", "x", "x", "x", "x", "x", "P", "R", "x", "x", "x", "x", "x", "x", "P", "x", "x", "x", "x", "p", "k", "x", "P", "x", "p", "P", "p", "x", "p", "x", "x", "x", "x", "x", "x", "x", "P", "x", "x", "x", "x", "x", "x", "P", "x", "p", "x", "x", "x", "q", "x", "x", "x", "Q", "x", "x", "x", "x", "x", "x", "K"],
-["r", "x", "x", "q", "k", "b", "x", "r", "p", "p", "x", "n", "n", "p", "p", "p", "x", "x", "x", "p", "x", "x", "x", "x", "x", "x", "x", "x", "p", "N", "x", "x", "x", "x", "x", "x", "P", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P", "P", "P", "x", "x", "P", "P", "P", "R", "N", "B", "Q", "K", "x", "x", "R"],
-["r", "q", "x", "x", "x", "b", "k", "x", "x", "x", "x", "x", "x", "p", "p", "p", "x", "x", "x", "x", "p", "x", "x", "x", "x", "x", "x", "p", "x", "x", "x", "N", "p", "x", "p", "P", "x", "x", "x", "x", "x", "r", "P", "x", "x", "x", "R", "P", "x", "P", "Q", "x", "x", "P", "P", "x", "x", "R", "x", "x", "x", "x", "x", "K"],
-["x", "r", "r", "x", "x", "x", "x", "k", "p", "x", "x", "x", "x", "x", "p", "p", "x", "x", "x", "R", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "Q", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P", "P", "P", "x", "x", "x", "q", "P", "x", "x", "K", "R", "x", "x", "x", "x"],
-["x", "x", "x", "x", "x", "x", "x", "r", "x", "x", "x", "x", "x", "p", "p", "x", "x", "x", "x", "p", "x", "x", "x", "p", "x", "x", "x", "q", "p", "x", "x", "x", "n", "x", "k", "x", "x", "x", "x", "x", "P", "x", "x", "x", "x", "x", "x", "P", "x", "Q", "P", "x", "x", "P", "x", "P", "R", "x", "x", "x", "x", "K", "x", "x"],
-["r", "x", "x", "q", "k", "b", "x", "r", "p", "p", "x", "n", "p", "p", "p", "x", "x", "x", "p", "x", "x", "n", "x", "p", "x", "x", "x", "x", "x", "x", "N", "x", "x", "x", "x", "P", "N", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P", "P", "P", "x", "Q", "P", "P", "P", "R", "x", "B", "x", "K", "x", "x", "R"],
-["r", "x", "b", "q", "x", "r", "k", "x", "p", "x", "p", "x", "x", "p", "p", "R", "x", "x", "x", "x", "x", "x", "P", "x", "x", "N", "x", "x", "n", "x", "x", "x", "x", "x", "p", "x", "P", "x", "x", "x", "x", "x", "x", "P", "x", "x", "x", "x", "P", "P", "P", "x", "x", "K", "P", "x", "R", "x", "x", "Q", "x", "x", "x", "x"],
-["r", "x", "x", "x", "x", "k", "x", "r", "p", "p", "N", "x", "x", "p", "x", "p", "x", "x", "n", "x", "x", "x", "p", "x", "x", "p", "x", "x", "R", "x", "x", "x", "x", "x", "b", "x", "x", "x", "x", "x", "x", "x", "x", "x", "B", "P", "K", "x", "x", "x", "x", "x", "x", "x", "P", "P", "x", "x", "x", "q", "R", "x", "x", "x"],
-["r", "x", "x", "q", "x", "x", "x", "x", "x", "p", "p", "x", "x", "R", "x", "x", "x", "x", "n", "p", "p", "x", "k", "P", "x", "x", "x", "x", "p", "x", "x", "x", "p", "x", "x", "x", "P", "x", "x", "x", "x", "x", "N", "P", "x", "x", "x", "x", "P", "P", "P", "x", "x", "x", "r", "x", "x", "x", "K", "x", "x", "x", "x", "R"]
-];
-const puzzleInfo = [[173, 230, 275, 333, 370, 440, 474, 505, 595, 611, 682, 712, 779, 826, 882, 1080, 1195, 1227, 1351, 1376, 1588, 1617, 1762, 1961], ["Backrank Mate In 1", "Rook and Knight", "Rook and Bishop", "Mate In 2", "Backrank Mate With Knight", "Mate In 3", "Protection From Knight", "Protection From Bishop", "Two Rooks", "Queen and Knight", "Rook Mate In 2", "Kings Control Squares", "Protection From Pawn", "Doubled Rooks", "Unstoppable Attack", "Use The Diagonal", "Knight Smothered Mate", "Pinned Pawn", "Sacrificial Mate", "Mate in 1", "Pinned and Smothered", "Sacrifice THE ROOK", "4 Piece Checkmate", "Rook Mate In 3"], [["h5→h8"], ["h7→f7"], ["b1→b8"], ["a8→c7", "d3→d8"], ["c3→c8"], ["d5→f7", "f7→f8", "f3→f8"], ["f6→f2"], ["f3→f7"], ["e1→e8"], ["d4→a7", "a7→a8"], ["a1→g1", "a8→f8"], ["g8→h8"], ["a7→b7"], ["c1→c6"], ["f3→g5", "h6→h7"], ["a1→c1", "c1→d2"], ["f5→d6"], ["h5→f6", "c2→h7"], ["c4→c8", "d6→d8", "d1→d8"], ["b2→b4"], ["e4→d6", "b2→b4", "b2→b4"], ["h7→h8", "d1→h5", "h5→h7"], ["e3→h6", "e5→e8", "e1→e8"], ["f7→g7", "h1→f1", "f1→f2"]]];
-//[[ratings], [descriptions], [hints]]
-let puzzleCount = 24;
-let randomPuzzle = 0;
-let allSolutionsResponses = [[[[32], [16], [58], [1, 44], [43], [28, 14, 46], [43], [46], [61], [36, 9], [57, 1], [7], [9], [59], [46, 24], [57, 59], [30], [32, 51], [35, 20, 60], [50], [37], [16, 60, 32], [45, 29, 61], [14, 64, 62]], [[8], [14], [2], [11, 4], [3], [14, 6, 6], [11], [14], [5], [9, 1], [63, 6], [8], [10], [19], [31, 16], [59, 52], [20], [22, 16], [3, 4, 4], [34], [20], [8, 32, 16], [24, 5, 5], [15, 62, 54]], [[], [], [], [5], [], [7, 4], [], [], [], [2], [7], [], [], [], [14], [53], [], [7], [2, 3], [], [], [7, 8], [6, 1], [23, 55]], [[], [], [], [6], [], [8, 6], [], [], [], [3], [8], [], [], [], [22], [52], [], [8], [3, 4], [], [], [8, 7], [7, 5], [22, 54]]], [[32], [8], [5], [6]]];
-//[[[all puzzles first solutions], [all puzzles second solutions], [all puzzles first responses], [all puzzles second responses]], [[current first solutions], [current second solutions], [current first responses], [current second responses]]];
 let hintShown = false;
 let move = 0;
 let correct = true;
-let playerRating = 100;
-let prevRating = 100;
 let turn = "b";
 let p1 = 0;
 let p2 = 0;
@@ -60,98 +27,6 @@ let bLongCastle = true
 let wShortCastle = true
 let bShortCastle = true
 
-function hintRequested(){
-    if(puzzleCompleted == false){
-        document.getElementById("hintDisplayContent").innerHTML = puzzleInfo[2][randomPuzzle-1][move-1];
-    }
-    else{
-        hideDots();
-    p1 = 0;
-    p2 = 0;
-    currentBoardPosition = 0;
-    totalBoardPositions = 0;
-    boardPositions = [];
-    prevMovesStr = "";
-    boardMoves = true;
-    puzzleCompleted = false;
-    prevRating = playerRating;
-    currentBoard = puzzleBoards[randomPuzzle-1].slice();
-    for(let i=0;i<4;i++){
-        allSolutionsResponses[1][i] = allSolutionsResponses[0][i][randomPuzzle-1].slice();
-    }
-    correct = true;
-    boardSetup();
-    document.getElementById("ratingContent").innerHTML = "Puzzle Rating:<br>" + puzzleInfo[0][randomPuzzle-1];
-    document.getElementById("puzzleID").innerHTML = puzzleInfo[1][randomPuzzle-1] + " | Moves Correct: " + "0/" + allSolutionsResponses[0][0][randomPuzzle-1].length;
-    document.getElementById("pRatingContent").innerHTML = "Player Rating:<br>" + playerRating;
-    document.getElementById("hintDisplayContent").innerHTML = "Hint Will Display Here";
-    document.getElementById("puzzleStatusContent").innerHTML = "Puzzle Status:<br>In Progress";
-    document.getElementById("hintButtonBoxRight").style.backgroundColor = "black";
-    document.getElementById("prevMovesContent").innerHTML = "Previous Moves Will Display Here";
-    lines = 1;
-    prevMovesPadding = 68 - 12 * lines;
-    let paddingString = "";
-    paddingString = prevMovesPadding.toString();
-    document.getElementById("prevMovesContent").style.marginTop = paddingString + "px";
-    document.getElementById("skipContentText").innerHTML = "Skip<br>Puzzle";
-    document.getElementById("hintDisplayContent").innerHTML = "Hint Will Display Here";
-    document.getElementById("hintButtonContent").value = "Click To Show Hint";
-    lines = 0;
-    move = 1;
-    moveCount = 0;
-    hintShown = false;
-    playerRating = prevRating;
-    document.getElementById("pRatingContent").innerHTML = "Player Rating:<br>" + playerRating;
-    turn = "w";
-    p1 = 0;
-    p2 = 0;
-    }
-} 
-
-function puzzleSetup(){
-    hideDots();
-    p1 = 0;
-    p2 = 0;
-    currentBoardPosition = 0;
-    totalBoardPositions = 0;
-    boardPositions = [];
-    prevMovesStr = "";
-    boardMoves = true;
-    puzzleCompleted = false;
-    prevRating = playerRating;
-    randomPuzzle = Math.ceil(Math.random() * puzzleCount);
-    currentBoard = puzzleBoards[randomPuzzle-1].slice();
-    for(let i=0;i<4;i++){
-        allSolutionsResponses[1][i] = allSolutionsResponses[0][i][randomPuzzle-1].slice();
-    }
-    correct = true;
-    boardSetup();
-    document.getElementById("ratingContent").innerHTML = "Puzzle Rating:<br>" + puzzleInfo[0][randomPuzzle-1];
-    document.getElementById("puzzleID").innerHTML = puzzleInfo[1][randomPuzzle-1] + " | Moves Correct: " + "0/" + allSolutionsResponses[0][0][randomPuzzle-1].length;
-    document.getElementById("pRatingContent").innerHTML = "Player Rating:<br>" + playerRating;
-    document.getElementById("hintDisplayContent").innerHTML = "Hint Will Display Here";
-    document.getElementById("puzzleStatusContent").innerHTML = "Puzzle Status:<br>In Progress";
-    document.getElementById("hintButtonBoxRight").style.backgroundColor = "black";
-    document.getElementById("prevMovesContent").innerHTML = "Previous Moves Will Display Here";
-    lines = 1;
-    prevMovesPadding = 68 - 12 * lines;
-    let paddingString = "";
-    paddingString = prevMovesPadding.toString();
-    document.getElementById("prevMovesContent").style.marginTop = paddingString + "px";
-    document.getElementById("skipContentText").innerHTML = "Skip<br>Puzzle";
-    document.getElementById("hintDisplayContent").innerHTML = "Hint Will Display Here";
-    document.getElementById("hintButtonContent").value = "Click To Show Hint";
-    lines = 0;
-    move = 1;
-    moveCount = 0;
-    hintShown = false;
-    playerRating = prevRating;
-    document.getElementById("pRatingContent").innerHTML = "Player Rating:<br>" + playerRating;
-    turn = "w";
-    p1 = 0;
-    p2 = 0;
-}
-
 function setup(){
     hideDots();
     p1 = 0;
@@ -168,32 +43,6 @@ function setup(){
     turn = "w";
     p1 = 0;
     p2 = 0;
-}
-
-function puzzleComplete(){
-    document.getElementById("skipContentText").innerHTML = "Next<br>Puzzle";
-    document.getElementById("hintDisplayContent").innerHTML = "Solution: " + puzzleInfo[2][randomPuzzle-1][move-1];
-    document.getElementById("hintButtonContent").value = "Retry Puzzle";
-    puzzleCompleted = true;
-    if(correct == true){
-        boardMoves = false;
-        let difference = puzzleInfo[0][randomPuzzle-1]-playerRating;
-        let change = 10+Math.round(difference/10);
-        if(change<5){
-            change = 5;
-        }
-        playerRating += parseInt(change);
-    }
-    else if(correct == false){
-        playerRating -=Math.round((Math.max(playerRating, puzzleInfo[0][randomPuzzle-1])-Math.min(playerRating, puzzleInfo[0][randomPuzzle-1]))/10);
-        boardMoves = false;
-        document.getElementById("puzzleStatusContent").innerHTML = "Puzzle Status:<br>Illegal Or Incorrect Move";
-        document.getElementById("hintButtonBoxRight").style.backgroundColor = "red";
-    }
-    if(playerRating < 100){
-        playerRating = 100;
-    }
-    document.getElementById("pRatingContent").innerHTML = "Player Rating:<br>" + playerRating;
 }
 
 function boardSetup(){
